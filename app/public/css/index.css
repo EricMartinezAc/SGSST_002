@@ -1,0 +1,151 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.surface_book_login {
+    /* Surface Book - login */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.pag {
+    /* pag */
+    /*fija la imagen fuera del scroll*/
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    /*centrar elementos*/
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    /*BACKGROUND---------*/
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, hsla(216, 78%, 68%, 0.5), #2193b0), url(../assets/img/bg_9980.png);
+    /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, hsla(216, 78%, 68%, 0.5), #2193b0), url(../../assets/img/equipo-de-trabajo-1080x675.jpg);*/
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: url(../assets/img/equipo-de-trabajo-1080x675.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.form_login {
+    /* form_login */
+    position: relative;
+    width: 600px;
+    height: 95%;
+    top: 5%;
+    display: flex;
+    /*centrar verticalmente*/
+    align-items: center;
+    justify-content: center;
+    /*poner uno bajo el otro*/
+    flex-direction: column;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form_login #logo {
+    /*img_logo */
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 80px;
+    background: url(../assets/ico/Logo_integral-riesgo-asesores-logo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 100px;
+    z-index: 100;
+}
+
+.form_login #slogan {
+    /* img_slogan */
+    position: absolute;
+    width: 250px;
+    height: 60px;
+    top: 180px;
+    background: url(../assets/ico/Logo_integral-riesgo-asesores-slogan.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 100;
+}
+
+.form_login form {
+    /* form */
+    z-index: 101;
+    position: absolute;
+    top: 100px;
+    margin: auto;
+    width: 85%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form_login form input {
+    /* form */
+    height: 45px;
+}
+
+.form_login form .line {
+    /* Line 1 */
+    position: relative;
+    width: 600px;
+    height: 0px;
+    top: 50px;
+    border: 2px solid #5450F4;
+}
+
+@media (max-width:700PX) {
+    .pag {
+        background: linear-gradient(to right, hsla(216, 78%, 68%, 0.5), #2193b0), url(../assets/img/decreto1072-1.jpg);
+    }
+    .form_login {
+        background-color: transparent;
+        top: 0;
+    }
+    .form_login:hover {
+        overflow-y: scroll;
+    }
+    ::-webkit-scrollbar {
+        width: px;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+    .form_login #logo {
+        width: 90px;
+        height: 90px;
+        top: 5px;
+    }
+    .form_login #slogan {
+        width: 200px;
+        height: 50px;
+        top: 100px;
+    }
+    .form_login form label {
+        color: #FFFFFF;
+    }
+    .form_login form input {
+        color: #5450F4;
+    }
+    .form_login form input[type=button] {
+        color: #FFFFFF;
+    }
+}
