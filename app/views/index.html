@@ -2,13 +2,19 @@
 <html lang="en">
 
 <head>
-    <%- include("./partials/0_head.html") %>
+    <%- include('partials/head.html') %>
 </head>
 
 <body class="surface_book_login">
     <main class="pag">
-        <%- include("./partials/1_index_main.html") %>
+        <!--inicio sesion-->
+        <%- include('./partials/modal_LOGIN.html') %>
+        <!--Registro-->
+        <%- include('./partials/modal_registrer.html') %>
     </main>
+
+    <%- include('partials/foot.html') %>
+
 </body>
 
 </html>

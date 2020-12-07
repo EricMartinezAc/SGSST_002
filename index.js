@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(routes)
 
 //static files
-app.use(express.static(path.join(__dirname, './app/public')));
+app.use(express.static(path.join(__dirname, 'app/public')));
 
 //listen
 app.listen(app.get('port'), () => {
