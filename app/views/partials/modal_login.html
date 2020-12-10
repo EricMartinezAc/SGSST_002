@@ -26,7 +26,10 @@
         <input type="text" id="UsuarioLogin" name="UsuarioLogin" value="">
         <label for="pswLogin">Contraseña</label>
         <input type="password" name="pswLogin" id="pswLogin">
-        <input type="button" value="Continuar">
+        <input onclick="login(
+            document.getElementById('UsuarioLogin').value,
+            document.getElementById('pswLogin').value
+        )" type="button" value="Continuar">
         <div class="line"></div>
     </form>
 </div>
