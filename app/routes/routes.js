@@ -5,8 +5,8 @@ const tittle = "sgsst"
 router.get('/',(req,res) => {
     res.render('index.html',{tittle});
 });
-router.get('/contact',(req,res) => {
-    res.render('contact.html',{tittle});
+router.get('/dashboard',(req,res) => {
+    res.render('dashboard.html',{tittle});
 });
 
 
