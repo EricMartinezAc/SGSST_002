@@ -1,0 +1,17 @@
+.slidebar-logo {
+    width: 30%;
+    height: 50%;
+}
+
+.slidebar-slogan {
+    width: 50%;
+    height: 50%;
+}
+
+
+
+@media (max-width:800PX) {
+    .slidebar-logo {
+        display: none;
+    }
+}
