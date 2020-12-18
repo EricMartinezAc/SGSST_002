@@ -2,7 +2,10 @@ const login = (datoUsu, psw) => {
     let ws = new WebSocket('ws://localhost:8002')
 
     ws.onopen = function (e) {
-        console.log("Connection established");
+
+        waiting_bar(1)
+
+        console.log("Conexión establecida");
 
         let datos = {
             _process_: 'consult',
@@ -11,24 +14,28 @@ const login = (datoUsu, psw) => {
 
         ws.send(JSON.stringify(datos));
 
-        console.log(`Sending ${datos} to server`);
+        console.log(`Enviado ${JSON.stringify(datos)} al servidor`);
     }
 
     ws.onmessage = function (event) {
-        alert(`Data received from server: ${event.data}`);
+        console.log(`Datos retornados desde el servidor: ${event.data}`);
     };
 
     ws.onclose = function (event) {
         if (event.wasClean) {
-            alert(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+            alert(`Conexión cerrada y limpiada, code=${event.code} reason=${event.reason}`);
         } else {
             // e.g. server process killed or network down
             // event.code is usually 1006 in this case
-            alert('Connection died');
+            alert('Conexión cortada');
         }
     };
 
     ws.onerror = function (error) {
-        alert(`${error.message}`);
+        alert(`No se pudo conectar, conexión: ${error.message}, `);
     };
+}
+
+function waiting_bar(estado) {
+    alert(`Barra de espera aquí ${estado}`)
 }
