@@ -5,8 +5,8 @@ const login = (datoUsu, psw) => {
         console.log("Connection established");
 
         let datos = {
-            _process: 'login',
-            _data: [datoUsu, psw]
+            _process_: 'consult',
+            _data_: [datoUsu, psw]
         }
 
         ws.send(JSON.stringify(datos));
