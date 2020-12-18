@@ -1,11 +1,17 @@
 const login = (datoUsu, psw) => {
-    alert(datoUsu, psw)
     let ws = new WebSocket('ws://localhost:8002')
 
     ws.onopen = function (e) {
-        alert("Connection established");
-        alert("Sending to server");
-        ws.send("My name is John");
+        console.log("Connection established");
+
+        let datos = {
+            _process: 'login',
+            _data: [datoUsu, psw]
+        }
+
+        ws.send(JSON.stringify(datos));
+
+        console.log(`Sending ${datos} to server`);
     }
 
     ws.onmessage = function (event) {

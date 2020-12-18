@@ -1,6 +1,6 @@
 label {
     margin: 5px 0;
-    font-family: Roboto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: normal;
     font-weight: normal;
     line-height: 28px;
@@ -11,20 +11,29 @@ label {
 }
 
 input {
-    width: 100%;
+    width: 99%;
     font-family: Roboto;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     border-style: none;
     outline: none;
-    padding-left: 5%;
 }
 
 input:hover {
     background-color: #CECCEE;
     position: relative;
     top: -5px;
+}
+
+input[type=number] {
+    text-align: center;
+    font-size: 140%;
+}
+
+input[type=password] {
+    text-align: center;
+    font-size: 140%;
 }
 
 input[type=button]:hover {
@@ -49,5 +58,5 @@ a, h4, h3, h2, h1 {
 li {
     list-style: none;
 }
-button {
-}
+
+button {}

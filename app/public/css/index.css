@@ -5,6 +5,10 @@ body, html {
     overflow: hidden;
 }
 
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .surface_book_login {
     /* Surface Book - login */
     position: relative;
