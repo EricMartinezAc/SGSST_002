@@ -1,41 +1,50 @@
 const login = (datoUsu, psw) => {
-    let ws = new WebSocket('ws://localhost:8002')
 
-    ws.onopen = function (e) {
+    let ResultVal = ValidacionesDeCampo(datoUsu, psw)
 
-        waiting_bar(1)
+    if (ResultVal == 1) {
 
-        console.log("Conexión establecida");
+        let ws = new WebSocket('ws://localhost:8002')
 
-        let datos = {
-            _process_: 'consult',
-            _data_: [datoUsu, psw]
+        ws.onopen = function (e) {
+
+            waiting_bar(1)
+
+            let datos = {
+                _process_: 'read',
+                _data_: [datoUsu, psw]
+            }
+            console.log("Conexión establecida")
+            ws.send(JSON.stringify(datos));
+            console.log(`Enviado ${JSON.stringify(datos)} al servidor`);
         }
 
-        ws.send(JSON.stringify(datos));
+        ws.onmessage = function (event) {
+            console.log(`Datos retornados desde el servidor: ${event.data}`);
+        };
 
-        console.log(`Enviado ${JSON.stringify(datos)} al servidor`);
+        ws.onclose = function (event) {
+            if (event.wasClean) {
+                alert(`Conexión cerrada y limpiada, code=${event.code} reason=${event.reason}`);
+            } else {
+                // e.g. server process killed or network down
+                // event.code is usually 1006 in this case
+                alert('Conexión cortada');
+            }
+        };
+
+        ws.onerror = function (error) {
+            alert(`No se pudo conectar, conexión: ${error.message}, `);
+        };
+
+    } else {
+        alert('no se pudo consultar')
     }
-
-    ws.onmessage = function (event) {
-        console.log(`Datos retornados desde el servidor: ${event.data}`);
-    };
-
-    ws.onclose = function (event) {
-        if (event.wasClean) {
-            alert(`Conexión cerrada y limpiada, code=${event.code} reason=${event.reason}`);
-        } else {
-            // e.g. server process killed or network down
-            // event.code is usually 1006 in this case
-            alert('Conexión cortada');
-        }
-    };
-
-    ws.onerror = function (error) {
-        alert(`No se pudo conectar, conexión: ${error.message}, `);
-    };
 }
 
 function waiting_bar(estado) {
     alert(`Barra de espera aquí ${estado}`)
+}
+function ValidacionesDeCampo(datos, passw) {
+    return 0
 }
