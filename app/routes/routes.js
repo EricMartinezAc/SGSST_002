@@ -8,6 +8,21 @@ router.get('/',(req,res) => {
 router.get('/dashboard',(req,res) => {
     res.render('dashboard.html',{tittle});
 });
+router.get('/afiliar',(req,res) => {
+    res.render('U_dboard/_afiliar.html',{tittle});
+});
+router.get('/contactos',(req,res) => {
+    res.render('U_dboard/_contactos.html',{tittle});
+});
+router.get('/empresas',(req,res) => {
+    res.render('U_dboard/_empresas.html',{tittle});
+});
+router.get('/personas',(req,res) => {
+    res.render('U_dboard/_personas.html',{tittle});
+});
+router.get('/contactos',(req,res) => {
+    res.render('U_dboard/_contactos.html',{tittle});
+});
 
 
 
