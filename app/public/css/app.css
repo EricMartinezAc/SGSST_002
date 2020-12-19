@@ -26,7 +26,7 @@ input:hover {
     top: -5px;
 }
 
-input[type=number] {
+input[type=number], input[type=text] {
     text-align: center;
     font-size: 140%;
 }
