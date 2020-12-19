@@ -15,3 +15,4 @@ function mostar_modal(modal_registroUsuSesion, modal_inicioSesion) {
         modal_registroUsuSesion.style.display = 'none'
     }
 }
+

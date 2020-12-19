@@ -23,7 +23,7 @@
     <div id="slogan"></div>
     <form>
         <label for="UsuarioLogin">No. Documeno de usuario</label>
-        <input type="number" id="UsuarioLogin" name="UsuarioLogin" value="">
+        <input type="number" pattern="[0-9]" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" id="UsuarioLogin" name="UsuarioLogin" value="">
         <label for="pswLogin">Contraseña de usuario</label>
         <input type="password" name="pswLogin" id="pswLogin">
         <input onclick="login(

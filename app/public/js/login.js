@@ -38,7 +38,7 @@ const login = (datoUsu, psw) => {
         };
 
     } else {
-        alert('no se pudo consultar')
+        alert('')
     }
 }
 
@@ -46,5 +46,6 @@ function waiting_bar(estado) {
     alert(`Barra de espera aquí ${estado}`)
 }
 function ValidacionesDeCampo(datos, passw) {
-    return 0
+    let mnjs = null;
+    return mnjs
 }
