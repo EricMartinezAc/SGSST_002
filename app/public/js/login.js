@@ -2,7 +2,7 @@ const login = (datoUsu, psw) => {
 
     let ResultVal = ValidacionesDeCampo(datoUsu, psw)
 
-    if (ResultVal == 1) {
+    if (ResultVal.length >= 1) {
 
         let ws = new WebSocket('ws://localhost:8002')
 
@@ -21,6 +21,7 @@ const login = (datoUsu, psw) => {
 
         ws.onmessage = function (event) {
             console.log(`Datos retornados desde el servidor: ${event.data}`);
+            window.location = '/dashboard'
         };
 
         ws.onclose = function (event) {
@@ -38,7 +39,7 @@ const login = (datoUsu, psw) => {
         };
 
     } else {
-        alert('')
+        alert(ResultVal)
     }
 }
 
@@ -47,5 +48,6 @@ function waiting_bar(estado) {
 }
 function ValidacionesDeCampo(datos, passw) {
     let mnjs = null;
+    mnjs = 'aprobado'
     return mnjs
 }
