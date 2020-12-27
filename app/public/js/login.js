@@ -4,7 +4,7 @@ const login = (datoUsu, psw) => {
 
     if (ResultVal.length >= 1) {
 
-        let ws = new WebSocket('ws://192.168.1.13:8002')
+        let ws = new WebSocket('ws://localhost:8002')
 
         ws.onopen = function (e) {
 

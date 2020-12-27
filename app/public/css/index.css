@@ -9,6 +9,25 @@ body, html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.contentbarProgress {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 255, 238, 0.5);
+    position: absolute;
+    top: 0%;
+    z-index: 119090;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress {
+    position: relative;
+    top: 50%;
+    width: 50%;
+    margin: 0% auto;
+}
+
 .surface_book_login {
     /* Surface Book - login */
     position: relative;
