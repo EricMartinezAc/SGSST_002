@@ -1,6 +1,7 @@
 /*----------*/
 
 .contentbarProgress, 
+.contentsubWind_alert_conexWS,
 .contentsubWind_alert_conexWS_cortada, 
 .contentsubWind_alert_conexWS_cant,
 .contentsubWind_alert_conexWS_closeclean {
@@ -18,6 +19,7 @@
 /*----------*/
 
 .progress, 
+.subWind_alert_conexWS,
 .subWind_alert_conexWS_cortada,
 .subWind_alert_conexWS_cant,
 .subWind_alert_conexWS_closeclean {
@@ -30,6 +32,7 @@
     top: 50%;
 }
 
+.subWind_alert_conexWS,
 .subWind_alert_conexWS_cortada,
 .subWind_alert_conexWS_cant,
 .subWind_alert_conexWS_closeclean  {

@@ -42,6 +42,7 @@ const login = (datoUsu, psw) => {
         };
 
         //al cerrar websocket:
+        /*
         ws.onclose = function (event) {
             //tumbar progressbar
             document.getElementById('progress-bar').style.width = '0%';
@@ -61,27 +62,15 @@ const login = (datoUsu, psw) => {
                     //cerrar progressvar
                     document.getElementById('contentbarProgress').style.display = 'none';
                 };
-                //redireccionar a inicio
-                setInterval(() => {
-                    window.location = '/'
-                }, 800);
-            }, 2000);
+            }, 4000);
         }
+        */
 
         //si existe un error en websocket:
         ws.onerror = function (error) {
             //tumbar progressbar
             document.getElementById('progress-bar').style.width = '0%';
-            setInterval(() => {
-                //cerrar progressvarsubWind_alert_conexWS_cant
-                //alert(`No se pudo conectar, conexión: ${error.message}, `);
-                cantConect(error)
-                document.getElementById('contentbarProgress').style.display = 'none';
-                //redireccionar a inicio
-                setInterval(() => {
-                    window.location = '/'
-                }, 800);
-            }, 2000);
+            cantConect(error)
         };
 
     } else {
@@ -95,6 +84,8 @@ function ValidacionesDeCampo(datos, passw) {
     return mnjs
 }
 
+//function al cerrar websocket:
+/*
 function conexion_ws_closeclean(evento) {
     document.getElementById('subWind_alert_conexWS_closeclean_eventCode').innerHTML = evento.code;
     document.getElementById('subWind_alert_conexWS_closeclean_eventReason').innerHTML = evento.reason;
@@ -104,14 +95,28 @@ function conexion_ws_closeclean(evento) {
 
 }
 
+
 function conexion_ws_cortada() {
     document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'inline';
     document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'none';
     document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
 }
+*/
 
 function cantConect(errorC) {
-    document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
-    document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'inline';
-    document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
+    setInterval(() => {
+        //cerrar progressvarsubWind_alert_conexWS_cant
+        document.getElementById('contentbarProgress').style.display = 'none';
+
+        //alert(`No se pudo conectar, conexión: ${error.message}, `);
+        document.getElementById('subWind_alert_conexWS_cant_errorMessage').innerHTML = errorC.message;
+        document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
+        document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'inline';
+        document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
+
+        //redireccionar a index
+        setInterval(() => {
+            window.location = '/'
+        }, 2000);
+    }, 1000);
 }
