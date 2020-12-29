@@ -1,0 +1,48 @@
+/*----------*/
+
+.contentbarProgress, .contentsubWind_alert_conexWS_cortada {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(238, 255, 238, 0.5);
+    position: absolute;
+    display: none;
+    top: 0%;
+    z-index: 119090;
+    justify-content: center;
+    align-items: center;
+}
+
+/*----------*/
+
+.progress, .subWind_alert_conexWS_cortada {
+    position: relative;
+    width: 50%;
+    margin: 0% auto;
+}
+
+.progress {
+    top: 50%;
+}
+
+.subWind_alert_conexWS_cortada {
+    top: 25%;
+}
+
+/*----------*/
+
+.progress-bar {
+    width: 0%;
+    transition: all 1s ease .8;
+}
+
+.alert_conexWs_cortada {
+    width: 100%;
+    height: 200px;
+    background-color: #2193b0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+/*----------*/

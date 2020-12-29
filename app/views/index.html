@@ -4,20 +4,24 @@
 <head>
     <%- include('partials/head.html') %>
         <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/accesorios.css">
         <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
 </head>
 
 <body class="surface_book_login">
-        <!--adicionales-->
-        <%- include('./partials/progressBar.html') %>
-    <main class="pag">
-        <!--inicio sesion-->
-        <%- include('./partials/modal_login.html') %>
-        <!--Registro-->
-        <%- include('./partials/modal_registrer.html') %>
-    </main>
+    <!--accesorios-->
+    <%- include('./partials/progressBar.html') %>
+        <%- include('./partials/subWind_alert_conexWS_cortada.html') %>
+            <%- include('./partials/subWind_alert_conexWS_closeclean.html') %>
+                <%- include('./partials/subWind_alert_conexWS_cant.html') %>
+                    <main class="pag">
+                        <!--inicio sesion-->
+                        <%- include('./partials/modal_login.html') %>
+                            <!--Registro-->
+                            <%- include('./partials/modal_registrer.html') %>
+                    </main>
 
-    <%- include('partials/foot.html') %>
+                    <%- include('partials/foot.html') %>
 
 </body>
 
