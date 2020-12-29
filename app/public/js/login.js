@@ -34,10 +34,7 @@ const login = (datoUsu, psw) => {
             //ocultar progressbar
             setInterval(() => {
                 document.getElementById('contentbarProgress').style.display = 'none';
-                //redireccionar a dashboar
-                setInterval(() => {
-                    window.location = '/dashboard'
-                }, 800);
+                connected()
             }, 2000);
         };
 
@@ -103,6 +100,7 @@ function conexion_ws_cortada() {
 }
 */
 
+//function al no tener conexion
 function cantConect(errorC) {
     setInterval(() => {
         //cerrar progressvarsubWind_alert_conexWS_cant
@@ -113,10 +111,28 @@ function cantConect(errorC) {
         document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
         document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'inline';
         document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
+        document.getElementById('contentsubWind_alert_conexWS').style.display = 'none';
 
         //redireccionar a index
         setInterval(() => {
             window.location = '/'
         }, 2000);
+    }, 1000);
+}
+
+//function se logró conexión
+function connected() {
+    setInterval(() => {
+
+        //alert success;
+        document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
+        document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'none';
+        document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
+        document.getElementById('contentsubWind_alert_conexWS').style.display = 'inline';
+
+        //redireccionar a index
+        setInterval(() => {
+            window.location = '/dashboard'
+        }, 1500);
     }, 1000);
 }
