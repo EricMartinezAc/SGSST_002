@@ -47,10 +47,13 @@ const login = (datoUsu, psw) => {
             document.getElementById('progress-bar').style.width = '0%';
             setInterval(() => {
                 if (event.wasClean) {
-                    //alert(`Conexión cerrada y limpiada, code=${event.code} reason=${event.reason}`);
-                    conexion_ws_closeclean(event)
                     //cerrar progressvar
                     document.getElementById('contentbarProgress').style.display = 'none';
+                    //mostar mensaje alerta
+                    setInterval(() => {
+                        //alert(`Conexión cerrada y limpiada, code=${event.code} reason=${event.reason}`);
+                        conexion_ws_closeclean(event)
+                    }, 500);
                 } else {
                     // e.g. server process killed or network down
                     // event.code is usually 1006 in this case1
@@ -93,11 +96,22 @@ function ValidacionesDeCampo(datos, passw) {
 }
 
 function conexion_ws_closeclean(evento) {
+    document.getElementById('subWind_alert_conexWS_closeclean_eventCode').innerHTML = evento.code;
+    document.getElementById('subWind_alert_conexWS_closeclean_eventReason').innerHTML = evento.reason;
+    document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
+    document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'none';
+    document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'inline';
+
 }
 
 function conexion_ws_cortada() {
+    document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'inline';
+    document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'none';
+    document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
 }
 
 function cantConect(errorC) {
-    
+    document.getElementById('contentsubWind_alert_conexWS_cortada').style.display = 'none';
+    document.getElementById('contentsubWind_alert_conexWS_cant').style.display = 'inline';
+    document.getElementById('contentsubWind_alert_conexWS_closeclean').style.display = 'none';
 }
