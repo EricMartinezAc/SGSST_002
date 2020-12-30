@@ -30,11 +30,11 @@ const login = (datoUsu, psw) => {
             //complete_bar
             document.getElementById('progress-bar').style.width = '100%';
             //mostrar datos retornados
-            console.log(`Datos retornados desde el servidor: ${event.data}`);
+            console.log(`Datos retornados desde el servidor: ${JSON.parse(JSON.stringify(JSON.parse(event.data).resp_))[1]}`);
             //ocultar progressbar
             setInterval(() => {
                 document.getElementById('contentbarProgress').style.display = 'none';
-                connected()
+                //connected()
             }, 2000);
         };
 

@@ -22,8 +22,9 @@
     <div id="logo"></div>
     <div id="slogan"></div>
     <form>
-        <label for="UsuarioLogin">No. Documeno de usuario</label>
-        <input type="text" pattern="[0-9]" maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" id="UsuarioLogin" name="UsuarioLogin" value="">
+        <label for="UsuarioLogin">Usuario</label>
+        <!--input type="text" pattern="[0-9]" maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" id="UsuarioLogin" name="UsuarioLogin" value=""-->
+        <input type="text" maxlength="10" id="UsuarioLogin" name="UsuarioLogin" value="">
         <label for="pswLogin">Contraseña de usuario</label>
         <input type="password" maxlength="10" name="pswLogin" id="pswLogin">
         <input onclick="login(
