@@ -19,7 +19,7 @@ const login = (datoUsu, psw) => {
             console.log("Conexión establecida")
 
             //enviar datos
-            let datos = { _process_: 'read', _data_: [datoUsu, psw] }
+            let datos = { _process_: 'auth', _data_: [datoUsu, psw] }
             ws.send(JSON.stringify(datos));
             console.log(`Enviado ${JSON.stringify(datos)} al servidor`);
 
@@ -27,15 +27,29 @@ const login = (datoUsu, psw) => {
 
         //en escuha de mensajes, recibir datos y ejecutar acciones:
         ws.onmessage = function (event) {
-            //complete_bar
-            document.getElementById('progress-bar').style.width = '100%';
-            //mostrar datos retornados
-            console.log(`Datos retornados desde el servidor: ${JSON.parse(JSON.stringify(JSON.parse(event.data).resp_))[1]}`);
-            //ocultar progressbar
-            setInterval(() => {
-                document.getElementById('contentbarProgress').style.display = 'none';
-                //connected()
-            }, 2000);
+            let resultado = JSON.parse(JSON.stringify(JSON.parse(event.data).resp_))[2];
+
+            if (JSON.parse(JSON.stringify(JSON.parse(event.data).error_)) === false) {//sin error de proceso
+
+                if (JSON.parse(JSON.stringify(JSON.parse(event.data).resp_))[1]) {//Existe resultado de consulta valida
+
+                    if (resultado === "success") {// estado de consulta
+                        //complete_bar
+                        document.getElementById('progress-bar').style.width = '100%';
+                        //mostrar datos retornados
+                        console.log(`Datos retornados desde el servidor: ${JSON.parse(JSON.stringify(JSON.parse(event.data).resp_))[1]}`);
+                        //ocultar progressbar
+                        setInterval(() => {
+                            document.getElementById('contentbarProgress').style.display = 'none';
+                            connected()
+                        }, 2000);
+                    } 
+
+                } 
+                
+            } else {
+                cantConect(' :xx: error de proceso')
+            }
         };
 
         //al cerrar websocket:
