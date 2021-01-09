@@ -1,10 +1,11 @@
 /*----------*/
 
 .contentbarProgress, 
-.contentsubWind_alert_conexWS,
+.contentsubWind_alert_auth_success,
 .contentsubWind_alert_conexWS_cortada, 
 .contentsubWind_alert_conexWS_cant,
-.contentsubWind_alert_conexWS_closeclean {
+.contentsubWind_alert_conexWS_closeclean,
+.contentsubWind_alert_auth_cant {
     width: 100%;
     height: 100%;
     background-color: rgba(238, 255, 238, 0.5);
