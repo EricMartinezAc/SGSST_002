@@ -1,5 +1,5 @@
 document.getElementById('modal_inicioSesion').style.display = 'flex'
-document.getElementById('modal_registroUsuSesion').style.display = 'none'
+//document.getElementById('modal_registroUsuSesion').style.display = 'none'
 
 function mostar_modal(modal_registroUsuSesion, modal_inicioSesion) {
 

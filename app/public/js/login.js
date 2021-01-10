@@ -1,14 +1,15 @@
 const login = (datoUsu, psw) => {
 
-    //levantar progressbar:
-    document.getElementById('contentbarProgress').style.display = 'inline';
-    document.getElementById('progress-bar').style.width = '75%';
-
     //validar campos:
     let ResultVal = ValidacionesDeCampo(datoUsu, psw)
+    console.log('validacion de datos: ', ResultVal[0])
 
     //si campos son cumplen especificaciones:
-    if (ResultVal.length >= 1) {
+    if (ResultVal[0] === true) {
+
+        //levantar progressbar:
+        document.getElementById('contentbarProgress').style.display = 'inline';
+        document.getElementById('progress-bar').style.width = '75%';
 
         //crear websocket:
         let ws = new WebSocket('ws://localhost:8002')
@@ -92,18 +93,91 @@ const login = (datoUsu, psw) => {
             }, 1000);
         };
 
-    } else {//Valores de entrada no cumplen condiciones
-        alert(ResultVal)
     }
+
+    //si campos no cumplen condiciones:
+    if (ResultVal[0] === false) {
+        document.getElementById('msjDatosErroneo').style.display = 'block'
+        document.getElementById('msjDatosErroneo').innerHTML = ResultVal[1]
+        setInterval(() => {
+            document.getElementById('msjDatosErroneo').innerHTML = 'Revise sus datos y vuelva a intentarlo <br> o comuníquese con su soporte técnico'
+            setInterval(() => {
+                window.location = '/'
+            }, 2000);
+        }, 1500);
+    }
+
 }
 
 //FUNCIONES PARA FUNCIONALIDADES ADICIONAES
 
 //validar campos
 function ValidacionesDeCampo(datos, passw) {
-    let mnjs = null;
-    mnjs = 'aprobado'
-    return mnjs
+
+    //variables configuradas para caso aprobación
+    let resultado = true
+    let mnj = 'Datos cumplen condiciones'
+
+    //-- SE DEBE FILTRAR LOS CASOS DE NO CUMPLIMIENTO DE CONDICIONES
+
+    //VALORES USUARIO
+    //1. si el usuario ingresa un correo
+    let exprcorreo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    let isEmail = exprcorreo.test(datos)
+
+    //2. si el usuario ingresa datos y passw mayusculas
+    let exprMayus = /[A-Z]{1}/
+    let isMayus = exprMayus.test(datos)
+
+    let exprMayusP = /[A-Z]{1}/
+    let isMayusP = exprMayusP.test(passw)
+
+    //3. si el usuario ingresa datos y passw minusculas
+    let exprMinus = /[a-z]{1}/
+    let isMinus = exprMinus.test(datos)
+    
+    let exprMinusP = /[a-z]{1}/
+    let isMinusP = exprMinusP.test(passw)
+
+    //4. si el usuario ingresa numeros
+    let exprNum = /[0-9]{1}/
+    let isNum = exprNum.test(datos)
+    
+    let exprNumP = /[0-9]{1}/
+    let isNumP = exprNumP.test(passw)
+
+    //5. si existe un espacio
+    let expSpace = /\s/
+    let isSpace = expSpace.test(datos)
+    
+    let expSpaceP = /\s/
+    let isSpaceP = expSpaceP.test(passw)
+
+    //VALIDACIONES USUARIO
+    if (isEmail === true) {//1.
+        resultado = false
+        mnj = 'No está configurado ingreso por correo. Por favor, ingrese su nickname'
+    }
+    if (isMayus === false || isMayusP === false) {//2.
+        resultado = false
+        mnj = 'El usuario y contraseña debe tener al menos una letra mayúscula'
+    }
+    if (isMinus === false || isMinusP === false) {//3.
+        resultado = false
+        mnj = 'El usuario y contraseña debe tener al menos una letra minúscula'
+    }
+    if (isNum === true || isNumP === false) {//4.
+        resultado = false
+        mnj = 'El usuario y contraseña debe tener al menos un número entre 0 al 9'
+    }
+    if (isSpace === true || isSpaceP === true) {//5.
+        resultado = false
+        mnj = 'El usuario y contraseña no debe tener espacios'
+    }
+
+
+
+    return [resultado, mnj]
 }
 
 //no se pudo conectar a websocket
