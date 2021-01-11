@@ -1,0 +1,17 @@
+version: "3"
+
+services: 
+  frontApp:
+    container_name: sgsst
+    restart: always
+    build: .
+    ports: 
+      - "1992:8001"
+    links: 
+      - database
+  
+  backend:
+    container_name: mysqldb
+    image: mysql
+    ports: 
+      - "2017:8080"
